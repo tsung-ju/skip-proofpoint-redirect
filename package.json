@@ -1,0 +1,19 @@
+{
+  "name": "skip-proofpoint-redirect",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "parcel build src/manifest.json --config @parcel/config-webextension"
+  },
+  "author": "Tsung-Ju Chiang",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "entities": "^4.4.0"
+  },
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.7.0",
+    "parcel": "^2.7.0",
+    "rimraf": "^3.0.2"
+  }
+}

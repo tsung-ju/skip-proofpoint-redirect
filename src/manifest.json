@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Skip Proofpoint Redirect",
+  "version": "0.0.1",
+  "description": "Skip Proofpoint URL Defense redirections",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://urldefense.proofpoint.com/v2/url?*"
+  ]
+}
