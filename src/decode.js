@@ -51,9 +51,6 @@ function createRunMapping() {
   const runValues = uppercase + lowercase + digits + "-" + "_";
   return Object.fromEntries([
     ["*", 1],
-    ...Array.prototype.map.call(runValues, (char, index) => [
-      "**" + char,
-      2 + index,
-    ]),
+    ...Array.from(runValues, (char, index) => ["**" + char, 2 + index]),
   ]);
 }
