@@ -1,21 +1,4 @@
-import { decodeHTML } from "entities";
-
-// See: https://help.proofpoint.com/Threat_Insight_Dashboard/Concepts/How_do_I_decode_a_rewritten_URL%3F
-
-function decodeV1(rewrittenUrl) {
-  let target = new URL(rewrittenUrl).searchParams.get("u");
-  target = decodeURIComponent(target);
-  target = decodeHTML(target);
-  return target;
-}
-
-function decodeV2(rewrittenUrl) {
-  let target = new URL(rewrittenUrl).searchParams.get("u");
-  target = target.replaceAll("-", "%").replaceAll("_", "/");
-  target = decodeURIComponent(target);
-  target = decodeHTML(target);
-  return target;
-}
+import { decodeV1, decodeV2, decodeV3 } from "./decode.js";
 
 browser.webRequest.onBeforeRequest.addListener(
   function (details) {
@@ -34,6 +17,17 @@ browser.webRequest.onBeforeRequest.addListener(
   },
   {
     urls: ["https://urldefense.proofpoint.com/v2/url?*"],
+    types: ["main_frame", "sub_frame"],
+  },
+  ["blocking"]
+);
+
+browser.webRequest.onBeforeRequest.addListener(
+  function (details) {
+    return { redirectUrl: decodeV3(details.url) };
+  },
+  {
+    urls: ["https://urldefense.proofpoint.com/v3/url?*"],
     types: ["main_frame", "sub_frame"],
   },
   ["blocking"]

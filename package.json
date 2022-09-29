@@ -1,5 +1,6 @@
 {
   "name": "skip-proofpoint-redirect",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,6 +10,7 @@
   "author": "Tsung-Ju Chiang",
   "license": "GPL-3.0-only",
   "dependencies": {
+    "base64-js": "^1.5.1",
     "entities": "^4.4.0"
   },
   "devDependencies": {
