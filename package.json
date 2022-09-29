@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "parcel build src/manifest.json --config @parcel/config-webextension && web-ext build -s ./dist --overwrite-dest"
+    "build": "parcel build src/manifest.json --config @parcel/config-webextension && web-ext build --overwrite-dest"
   },
   "author": "Tsung-Ju Chiang",
   "license": "GPL-3.0-only",
@@ -18,5 +18,8 @@
     "parcel": "^2.7.0",
     "rimraf": "^3.0.2",
     "web-ext": "^7.2.0"
+  },
+  "webExt": {
+    "sourceDir": "dist"
   }
 }
