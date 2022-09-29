@@ -103,3 +103,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# web-ext build output
+web-ext-artifacts/
