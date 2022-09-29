@@ -27,7 +27,7 @@ browser.webRequest.onBeforeRequest.addListener(
     return { redirectUrl: decodeV3(details.url) };
   },
   {
-    urls: ["https://urldefense.proofpoint.com/v3/url?*"],
+    urls: ["https://urldefense.proofpoint.com/v3/*"],
     types: ["main_frame", "sub_frame"],
   },
   ["blocking"]
