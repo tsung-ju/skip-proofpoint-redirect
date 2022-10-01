@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Skip Proofpoint Redirect",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Skip Proofpoint URL Defense redirections",
   "background": {
     "scripts": ["background.js"]
