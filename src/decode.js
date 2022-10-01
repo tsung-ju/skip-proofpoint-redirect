@@ -20,16 +20,18 @@ export function decodeV2(rewrittenUrl) {
 
 export function decodeV3(rewrittenUrl) {
   let [_, url, encBytes] = rewrittenUrl.match(/v3\/__(.+?)__;(.*?)!/);
-  const decBytes = decodeEncBytes(encBytes);
   url = decodeURIComponent(url);
+  const decBytes = decodeEncBytes(encBytes);
   url = substituteTokens(url, decBytes);
   return url;
 }
 
+const utf8Decoder = new TextDecoder("utf-8");
+
 function decodeEncBytes(encBytes) {
-  const paddingLength = 3 - ((3 + encBytes.length) % 4);
+  const paddingLength = -encBytes.length & 3;
   const bytes = base64.toByteArray(encBytes + "=".repeat(paddingLength));
-  return new TextDecoder("utf-8").decode(bytes);
+  return utf8Decoder.decode(bytes);
 }
 
 const v3RunMapping = createRunMapping();
